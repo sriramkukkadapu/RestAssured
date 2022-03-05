@@ -1,5 +1,7 @@
 package Tests;
 
+import org.testng.Assert;
+
 import FetchPayload.Payload;
 import io.restassured.path.json.JsonPath;
 
@@ -33,6 +35,17 @@ public class ParseComplexJson {
 		}
 		
 		//check all courses amount equals to total amount
+		int total=path.getInt("dashboard.purchaseAmount");
+		int actualTotal = 0;
+		for(int i=0;i<size;i++) {
+			int copies = path.getInt("courses["+i+"].copies");
+			int price = path.getInt("courses["+i+"].price");
+			int courseTotalPrice = copies*price;
+			actualTotal = actualTotal + courseTotalPrice;
+		}
+		Assert.assertEquals(actualTotal, total);
+		
+		
 		
 		
 	}
