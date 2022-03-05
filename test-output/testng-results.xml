@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="3261" started-at="2022-03-05T04:05:33 CST" finished-at="2022-03-05T04:05:37 CST">
+  <suite name="Default suite" duration-ms="3130" started-at="2022-03-05T04:07:33 CST" finished-at="2022-03-05T04:07:36 CST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="3261" started-at="2022-03-05T04:05:33 CST" finished-at="2022-03-05T04:05:37 CST">
-      <class name="WorkshopFiles.ListUser">
-        <test-method status="PASS" signature="testListUser()[pri:0, instance:WorkshopFiles.ListUser@2173f6d9]" name="testListUser" duration-ms="3214" started-at="2022-03-05T04:05:33 CST" finished-at="2022-03-05T04:05:37 CST">
+    <test name="Default test" duration-ms="3130" started-at="2022-03-05T04:07:33 CST" finished-at="2022-03-05T04:07:36 CST">
+      <class name="WorkshopUshaFiles.GetSingleUser">
+        <test-method status="PASS" signature="testGetSignleUser()[pri:0, instance:WorkshopUshaFiles.GetSingleUser@2173f6d9]" name="testGetSignleUser" duration-ms="3096" started-at="2022-03-05T04:07:33 CST" finished-at="2022-03-05T04:07:36 CST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testListUser -->
-      </class> <!-- WorkshopFiles.ListUser -->
+        </test-method> <!-- testGetSignleUser -->
+      </class> <!-- WorkshopUshaFiles.GetSingleUser -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
