@@ -42,6 +42,7 @@ public class First {
 		RestAssured.baseURI = "https://rahulshettyacademy.com";
 		/*=========== Post Basic ==========*/
 		given().queryParam("key", "qaclick123")
+		.log().all()
 		.headers("Content-Type", "application/json")
 		.body(body)
 		

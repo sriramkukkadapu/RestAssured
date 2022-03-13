@@ -76,4 +76,16 @@ public static String CoursePrice()
 	
 }
 
+public static String addBook(String aisle,String isbn) {
+	String body = "{\n"
+			+ "\n"
+			+ "\"name\":\"Learn Appium Automation with Java1\",\n"
+			+ "\"isbn\":\""+isbn+"\",\n"
+			+ "\"aisle\":\""+aisle+"\",\n"
+			+ "\"author\":\"John foe\"\n"
+			+ "}\n"
+			+ "";
+	return body;
+}
+
 }
