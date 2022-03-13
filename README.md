@@ -49,7 +49,7 @@ given().relaxedHTTPSValidation()
 SessionFilter -> is used to filter session from auth api and pass it across the entire test script.
 
 ```java
-SessionFilter  session=new SessionFilter(); 
+SessionFilter  session = new SessionFilter(); 
  given() 
 	.filter(session) 
 	.post("<auth api url>") 
@@ -64,6 +64,7 @@ subsequent API's this session can be used like below.
 ------------------------------------------------------------------------------------		
 Attach files in request
 
+```java
 	given()
 		.header("Content-Type","multipart/form-data")
 		.pathParam("id", issueId )
@@ -71,6 +72,24 @@ Attach files in request
 		.multiPart("file", new File("attachment.png"))
 		.when().post("rest/api/2/issue/{id}/attachments")
 		.then().log().all().assertThat().statusCode(200);
+```
 
+------------------------------------------------------------------------------------		
+# Get Example:
 
-
+```java
+		RestAssured.baseURI = "http://216.10.245.166";
+		String response = 
+			given()
+				.log().all()
+				.header("Content-Type","application/json")
+				.body(Payload.addBook("jahsgdasd","761253"))
+			.when()
+				.post("/Library/Addbook.php")
+			.then()
+				.assertThat().statusCode(200).extract().response().asString();
+		
+		JsonPath  path = ReusableMethods.rawToJson(response);
+		String id = path.getString("ID");
+		System.out.println(id);	
+```			
