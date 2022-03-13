@@ -40,10 +40,10 @@ http://localhost:8080/secure/admin/ViewAttachmentSettings.jspa
 
 
 To ignore HTTPS certificate validation by rest assured give this in given section <br>
+
 ```java
 given().relaxedHTTPSValidation()
 ```
-
 
 ------------------------------------------------------------------------------------		
 SessionFilter -> is used to filter session from auth api and pass it across the entire test script.
@@ -53,15 +53,17 @@ SessionFilter  session = new SessionFilter();
  given() 
 	.filter(session) 
 	.post("<auth api url>") 
-```    
+```
 	
 subsequent API's this session can be used like below.
+
 ```java
 	given() 
 	.filter(session) 
 	.when().post("<add user url>")
-```	
+```
 ------------------------------------------------------------------------------------		
+
 Attach files in request
 
 ```java
@@ -75,21 +77,32 @@ Attach files in request
 ```
 
 ------------------------------------------------------------------------------------		
-# Get Example:
+# Post Example:
 
 ```java
-		RestAssured.baseURI = "http://216.10.245.166";
-		String response = 
-			given()
-				.log().all()
-				.header("Content-Type","application/json")
-				.body(Payload.addBook("jahsgdasd","761253"))
-			.when()
-				.post("/Library/Addbook.php")
-			.then()
-				.assertThat().statusCode(200).extract().response().asString();
-		
-		JsonPath  path = ReusableMethods.rawToJson(response);
-		String id = path.getString("ID");
-		System.out.println(id);	
-```			
+	RestAssured.baseURI = "http://216.10.245.166";
+	String response = 
+		given()
+			.log().all()
+			.header("Content-Type","application/json")
+			.body(Payload.addBook("jahsgdasd","761253"))
+		.when()
+			.post("/Library/Addbook.php")
+		.then()
+			.assertThat().statusCode(200).extract().response().asString();
+	
+	JsonPath  path = ReusableMethods.rawToJson(response);
+	String id = path.getString("ID");
+	System.out.println(id);	
+```
+------------------------------------------------------------------------------------		
+# Reading JSON data from file to add it in request
+
+```java
+	String fileData = new String(Files.readAllBytes(Paths.get("datafiles/addPlace.json")));	
+```
+
+
+
+
+
