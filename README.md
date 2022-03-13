@@ -42,17 +42,17 @@ http://localhost:8080/secure/admin/ViewAttachmentSettings.jspa
 To ignore HTTPS certificate validation by rest assured give this in given section <br>
 
 ```java
-given().relaxedHTTPSValidation()
+	given().relaxedHTTPSValidation()
 ```
 
 ------------------------------------------------------------------------------------		
 SessionFilter -> is used to filter session from auth api and pass it across the entire test script.
 
 ```java
-SessionFilter  session = new SessionFilter(); 
- given() 
-	.filter(session) 
-	.post("<auth api url>") 
+	SessionFilter  session = new SessionFilter(); 
+	 given() 
+		.filter(session) 
+		.post("<auth api url>") 
 ```
 	
 subsequent API's this session can be used like below.
