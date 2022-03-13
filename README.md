@@ -44,11 +44,12 @@ To ignore HTTPS certificate validation by rest assured give this in given sectio
 given().relaxedHTTPSValidation()
 ```
 
+
 ------------------------------------------------------------------------------------		
 SessionFilter -> is used to filter session from auth api and pass it across the entire test script.
 
-SessionFilter  session=new SessionFilter(); 
 ```java
+SessionFilter  session=new SessionFilter(); 
  given() 
 	.filter(session) 
 	.post("<auth api url>") 
