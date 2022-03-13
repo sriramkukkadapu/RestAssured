@@ -59,8 +59,8 @@ subsequent API's this session can be used like below.
 
 ```java
 	given() 
-	.filter(session) 
-	.when().post("<add user url>")
+		.filter(session) 
+		.when().post("<add user url>")
 ```
 ------------------------------------------------------------------------------------		
 
