@@ -102,7 +102,104 @@ Attach files in request
 	String fileData = new String(Files.readAllBytes(Paths.get("datafiles/addPlace.json")));	
 ```
 
+# Serialization and De-serialization
 
+For this we use below dependencies in pom.xml
+
+Jackson data bind
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind/2.13.2
+
+jackson annotations
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations/2.13.2
+
+jackson core
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.13.2
+
+Gson
+https://mvnrepository.com/artifact/com.google.code.gson/gson/2.9.0
+
+
+# Example Java code for De-serialization
+
+JSON Structure for example
+![plot](./images/GerCoursesJSON.png)
+
+
+```java 
+GetCourse gc = given()
+			.queryParam("access_token", access_token)
+			.expect().defaultParser(Parser.JSON)
+		.when()
+			.get("https://rahulshettyacademy.com/getCourse.php").as(GetCourse.class);
+		System.out.println("===========");
+		System.out.println(gc.getLinkedIn());
+		System.out.println(gc.getInstructor());
+		gc.printData();
+//		System.out.println(response);
+		
+		System.out.println("===========");
+		System.out.println(gc.getCourses().getApi().get(1).getCourseTitle());
+		System.out.println(gc.getCourses().getApi().get(1).getPrice());
+		
+		System.out.println("===========");
+		List<API> apiList = gc.getCourses().getApi();
+		for(int i=0;i<apiList.size();i++) {
+			if(apiList.get(i).getCourseTitle().equals("SoapUI Webservices testing")) {
+				System.out.println(apiList.get(i).getPrice());
+			}
+		}
+		
+		System.out.println("===========");
+		List<WebAutomation> waList  = gc.getCourses().getWebAutomation();
+		for(int i=0;i<waList.size();i++) {
+				System.out.println(waList.get(i).getCourseTitle());
+		}
+```
+
+#Example Java code for Serialization
+
+Sample Json for serialisation is below.
+![plot](./images/MapsAPIPostJSON.png)
+
+Java code for serializing above JSON => preparing JSON data as a Java object and sending it in the request.
+
+```java
+AddPlace p = new AddPlace();
+		p.setAccuracy(50);
+		p.setAddress("29, side layout, cohen 09");
+		p.setLanguage("French-IN");
+		
+		Location location = new Location();
+		location.setLat(-38.383494);
+		location.setLng(33.427362);
+		
+		p.setLocation(location);
+		
+		p.setName("Frontline house");
+		List<String> types = new ArrayList<String>();
+		types.add("shoe park");
+		types.add("shop");
+		
+		p.setTypes(types);
+		p.setPhone_number("(+91) 983 893 3937");
+		p.setWebsite("http://google.com");
+		
+		Response response = given()
+											.header("Content-Type","application/json")
+											.queryParam("key", "qaclick123")
+											.body(p)
+											.log().all()
+										.when()
+											.post("maps/api/place/add/json")
+										.then()
+											.assertThat().statusCode(200)
+											.extract().response();
+		
+		System.out.println("============");
+		System.out.println(response.asString());
+```
+
+		
 
 
 
