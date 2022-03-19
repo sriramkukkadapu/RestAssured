@@ -184,17 +184,18 @@ AddPlace p = new AddPlace();
 		p.setPhone_number("(+91) 983 893 3937");
 		p.setWebsite("http://google.com");
 		
-		Response response = given()
-											.header("Content-Type","application/json")
-											.queryParam("key", "qaclick123")
-											.body(p)
-											.log().all()
-										.when()
-											.post("maps/api/place/add/json")
-										.then()
-											.assertThat().statusCode(200)
-											.extract().response();
-		
+		Response response = 
+				given()
+					.header("Content-Type","application/json")
+					.queryParam("key", "qaclick123")
+					.body(p)
+					.log().all()
+				.when()
+					.post("maps/api/place/add/json")
+				.then()
+					.assertThat().statusCode(200)
+					.extract().response();
+
 		System.out.println("============");
 		System.out.println(response.asString());
 ```
