@@ -156,7 +156,7 @@ GetCourse gc = given()
 		}
 ```
 
-#Example Java code for Serialization
+# Example Java code for Serialization
 
 Sample Json for serialisation is below.
 ![plot](./images/MapsAPIPostJSON.png)
@@ -222,13 +222,13 @@ ResponseSpecification resSpec =  new ResponseSpecBuilder()
 
 ```java
 Response response = 
-				given()
-					.spec(reqSpec)
-					.body(p)
-					.log().all()
-				.when()
-					.post("maps/api/place/add/json")
-				.then()
-					.spec(resSpec)
-					.extract().response();
+			given()
+				.spec(reqSpec)
+				.body(p)
+				.log().all()
+			.when()
+				.post("maps/api/place/add/json")
+			.then()
+				.spec(resSpec)
+				.extract().response();
 ```
