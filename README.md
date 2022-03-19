@@ -200,7 +200,35 @@ AddPlace p = new AddPlace();
 		System.out.println(response.asString());
 ```
 
-		
+# Example of Request Spec Builder
 
+```java
+RequestSpecification reqSpec = new RequestSpecBuilder()
+					.setBaseUri("https://rahulshettyacademy.com")
+					.setContentType(ContentType.JSON)
+					.addQueryParam("key", "qaclick123")
+					.build();
+```
 
+# Example of Response Spec Builder
 
+```java
+ResponseSpecification resSpec =  new ResponseSpecBuilder()
+				.expectContentType(ContentType.JSON)
+				.expectStatusCode(200).build();
+```
+							
+# Example of how to use Spec builder in the request
+
+```java
+Response response = 
+				given()
+					.spec(reqSpec)
+					.body(p)
+					.log().all()
+				.when()
+					.post("maps/api/place/add/json")
+				.then()
+					.spec(resSpec)
+					.extract().response();
+```
