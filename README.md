@@ -223,12 +223,12 @@ ResponseSpecification resSpec =  new ResponseSpecBuilder()
 ```java
 Response response = 
 			given()
-				.spec(reqSpec)
+				.spec(reqSpec)  //Request spec
 				.body(p)
 				.log().all()
 			.when()
 				.post("maps/api/place/add/json")
 			.then()
-				.spec(resSpec)
+				.spec(resSpec)	//Request spec
 				.extract().response();
 ```
